@@ -104,57 +104,57 @@
 <script>
   const addAnotherBtn = document.getElementById('addAnother');
 
-addAnotherBtn.addEventListener('click', () => {
-  const dynamicForm = document.getElementById('dynamicForm');
+  addAnotherBtn.addEventListener('click', () => {
+    const dynamicForm = document.getElementById('dynamicForm');
 
-  const newShirtGroup = document.createElement('div');
-  newShirtGroup.classList.add('col-md-12', 'mb-3');
-  newShirtGroup.innerHTML = `
-    <div class="form-group col-md-3">
-      <label for="shirt">Shirt:</label>
-      <select name="shirt[]" class="form-control">
-        <option value="">Shirt</option>
-        <option value="T-Shirt">T-Shirt</option>
-        <option value="Polo Shirt(Cotton)">Polo Shirt(Cotton)</option>
-        <option value="Polo Shirt(Dryfit)">Polo Shirt(Dryfit)</option>
-        <!-- Add more options as needed -->
-      </select>
-    </div>
-    <div class="form-group col-md-3">
-      <select name="size[]" class="form-control">
-        <option value="">Size</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <!-- Add more options as needed -->
-      </select>
-    </div>
-    <div class="form-group col-md-3">
-      <select name="color[]" class="form-control">
-        <option value="">Colour</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <!-- Add more options as needed -->
-      </select>
-    </div>
-    <div class="form-group col-md-3">
-      <input type="number" name="quantity[]" class="form-control" min="1" value="1">
-    </div>
-  `;
-  dynamicForm.appendChild(newShirtGroup);
-});
- 
-  // Function to append dynamically added sections to the form before submission
-  function prepareFormForSubmission() {
-    const dynamicSections = dynamicForm.querySelectorAll('.col-md-12');
-    dynamicSections.forEach(section => {
-      const form = document.getElementById('contactForm');
-      form.appendChild(section);
+    const newShirtGroup = document.createElement('div');
+    newShirtGroup.classList.add('col-md-12', 'mb-3');
+    newShirtGroup.innerHTML = `
+      <div class="form-group">
+        <label for="shirt">Shirt:</label>
+        <select name="shirt[]" class="form-control">
+          <option value="">Shirt</option>
+          <option value="T-Shirt">T-Shirt</option>
+          <option value="Polo Shirt(Cotton)">Polo Shirt(Cotton)</option>
+          <option value="Polo Shirt(Dryfit)">Polo Shirt(Dryfit)</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="size[]" class="form-control">
+          <option value="">Size</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="color[]" class="form-control">
+          <option value="">Colour</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="number" name="quantity[]" class="form-control" min="1" value="1">
+      </div>
+    `;
+    dynamicForm.appendChild(newShirtGroup);
+  });
+
+  // Add event listener for form submission
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    // Get all dynamically added fields
+    const dynamicFields = document.querySelectorAll('#dynamicForm [name^="shirt"], #dynamicForm [name^="size"], #dynamicForm [name^="color"], #dynamicForm [name^="quantity"]');
+    
+    // Append each dynamically added field to the form
+    dynamicFields.forEach(field => {
+      this.appendChild(field.cloneNode(true));
     });
-  }
-
-  // Hook into the form submission event to prepare the form before submission
-  document.getElementById('contactForm').addEventListener('submit', prepareFormForSubmission);
+  });
 </script>
+
 
 </body>
 </html>
