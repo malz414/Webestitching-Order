@@ -15,20 +15,11 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="row mb-5">
-          <div class="col-md-4 mr-auto">
-            <h3 class="thin-heading mb-4">Webestitching</h3>
-            <p>English Harbour<br> Antigua</p>
-          </div>
-          <div class="col-md-6 ml-auto">
-            <h3 class="thin-heading mb-4">Contact</h3>
-            <p>T: +1 (268) 782 2252 <br> E: Webestitching@yahoo.com</p>
-          </div>
-        </div>
+       
 
         <div class="row justify-content-center">
           <div class="col-md-12">
-            <h3 class="thin-heading mb-4">Contact Us</h3>
+            <h3 class="thin-heading mb-4">WeBeStitching Order Form</h3>
             <form class="mb-5" method="post" action="https://formspree.io/f/mrgnkpjq" name="contactForm" id="contactForm">
               <div class="row">
                 <div class="col-md-6 form-group">
@@ -44,7 +35,25 @@
                 </div>
               </div>  
 
-              <h3 class="thin-heading mb-4">Shirt Order</h3>
+              <div class="row" >
+                <div class="col-md-6 form-group">
+                  <label for="shirt">Where do you want your logo</label>
+                  <select id="image-select" onchange="changeImage()">
+                    <option value="leftF.png">Left Front</option>
+                    <option value="leftS.png">Left Sleeve</option>
+                    <option value="rightF.png">Right Front</option>
+                    <option value="rightS.png">Right Sleeve</option>
+                  </select>
+                </div>
+                <div class="col-md-6 form-group">
+                  <div id="image-container">
+                    <img id="display-image" src="leftF.png" alt="Image">
+                  </div>
+                </div>
+               
+              </div>  
+
+           
               <div class="row" id="dynamicForm">
                 <div class="col-12">
                   <div class="form-group">
@@ -91,6 +100,13 @@
             </div>
           </div>
         </div>
+        <div class="row mb-5">
+      
+          <div class="col-md-6 ml-auto">
+            <h3 class="thin-heading mb-4">Contact</h3>
+            <p>T: +1 (268) 782 2252 <br> E: Webestitching@yahoo.com</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -102,6 +118,15 @@
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/main.js"></script>
 
+<script>
+  function changeImage() {
+    var selectBox = document.getElementById("image-select");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    var image = document.getElementById("display-image");
+    
+    image.src = selectedValue;
+  }
+</script>
 <script>
  const dynamicForm = document.getElementById('dynamicForm');
   const addAnotherBtn = document.getElementById('addAnother');
