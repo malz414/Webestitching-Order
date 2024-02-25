@@ -101,7 +101,6 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/main.js"></script>
-
 <script>
   const dynamicForm = document.getElementById('dynamicForm');
   const addAnotherBtn = document.getElementById('addAnother');
@@ -116,9 +115,9 @@
         <label for="shirt${shirtIndex}">Shirt ${shirtIndex}:</label>
         <select name="shirt${shirtIndex}" id="shirt${shirtIndex}" class="form-control">
           <option value="">Shirt</option>
-                      <option value="T-Shirt">T-Shirt</option>
-                      <option value="Polo Shirt(Cotton)">Polo Shirt(Cotton)</option>
-                      <option value="Polo Shirt(Dryfit)">Polo Shirt(Dryfit)</option>
+          <option value="T-Shirt">T-Shirt</option>
+          <option value="Polo Shirt(Cotton)">Polo Shirt(Cotton)</option>
+          <option value="Polo Shirt(Dryfit)">Polo Shirt(Dryfit)</option>
           <!-- Add more options as needed -->
         </select>
       </div>
@@ -145,7 +144,19 @@
     dynamicForm.appendChild(newShirtGroup);
     shirtIndex++;
   });
+
+  // Function to append dynamically added sections to the form before submission
+  function prepareFormForSubmission() {
+    const dynamicSections = dynamicForm.querySelectorAll('.col-12');
+    dynamicSections.forEach(section => {
+      dynamicForm.appendChild(section);
+    });
+  }
+
+  // Hook into the form submission event to prepare the form before submission
+  document.querySelector('form[name="contactForm"]').addEventListener('submit', prepareFormForSubmission);
 </script>
+
 
 </body>
 </html>
