@@ -29,7 +29,7 @@
         <div class="row justify-content-center">
           <div class="col-md-12">
             <h3 class="thin-heading mb-4">Contact Us</h3>
-            <form class="mb-5" method="post" data-netlify="true" name="contactForm">
+            <form class="mb-5" method="post" data-netlify="true" action="https://formspree.io/f/mrgnkpjq" name="contactForm">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" class="form-control" name="name" id="name" placeholder="Your name">
@@ -108,7 +108,7 @@
     const dynamicForm = document.getElementById('dynamicForm');
 
     const newShirtGroup = document.createElement('div');
-    newShirtGroup.classList.add('col-md-12', 'mb-3');
+    newShirtGroup.classList.add('col-md-12');
     newShirtGroup.innerHTML = `
       <div class="form-group">
         <label for="shirt">Shirt:</label>
